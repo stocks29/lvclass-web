@@ -37,16 +37,30 @@
 <div>
     <h3>Reviews</h3>
 
-    <div ng-repeat="review in reviews[event._id]">
-        <div>Date: {{review.date}} Rating: {{review.rating}}/5</div>
+    <div ng-show="reviews.length < 1">Be the first to write a review!</div>
+    <div ng-repeat="review in reviews">
+        <div>Date: {{review.date}}</div>
+        <div>Rating: {{review.rating}}/5</div>
         <div>{{review.user}} says "{{review.comment}}"</div>
+        <br>
     </div>
     <h3>Write a Review</h3>
 
     <form ng-submit="saveReview()">
-        <input type="text" placeholder="Your Name"/>
-        <input type="text" placeholder="rating out of 5"/>
-        <textarea placeholder="Comments"></textarea>
+        <table>
+            <tr>
+                <th>Your Name</th>
+                <td><input ng-model="newReview.user" type="text" placeholder="Your Name"/></td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td><input ng-model="newReview.rating" type="text" placeholder="rating out of 5"/></td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td><textarea ng-model="newReview.comment" placeholder="Comments"></textarea></td>
+            </tr>
+        </table>
         <input type="submit" value="Publish Review"/>
     </form>
 </div>
