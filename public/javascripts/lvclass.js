@@ -19,5 +19,5 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
 
 .controller('EventListCtrl', function($scope, Events) {
     $scope.events = Events.query();
+    $scope.searchUrl = "/events";
 });
-
