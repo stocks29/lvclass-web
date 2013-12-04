@@ -13,7 +13,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
             templateUrl:'templates/events/list.html'
         })
         .otherwise({
-            "redirectTo": '/events'
+            "redirectTo": '/search'
         });
 })
 
