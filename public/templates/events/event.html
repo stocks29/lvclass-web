@@ -1,0 +1,52 @@
+<h2>{{event.title}}</h2>
+<p>{{event.description}}</p>
+<table>
+    <tr>
+        <th>Category</th>
+        <td>{{event.eventCategory}}</td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td><a href="{{event.mapUrl}}" target="_blank">{{event.location}}</a></td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>{{event.address}}</td>
+    </tr>
+    <tr>
+        <th>Age Range</th>
+        <td>{{event.ageRange}}</td>
+    </tr>
+    <tr>
+        <th>Day of Week</th>
+        <td>{{event.dayOfWeek}}</td>
+    </tr>
+    <tr>
+        <th>Time of Day</th>
+        <td>{{event.timeOfDay}}</td>
+    </tr>
+    <tr>
+        <th>Fee</th>
+        <td>{{event.fee}}</td>
+    </tr>
+    <tr>
+        <th>Contact Number</th>
+        <td>{{event.contactNumber}}</td>
+    </tr>
+</table>
+<div>
+    <h3>Reviews</h3>
+
+    <div ng-repeat="review in reviews[event._id]">
+        <div>Date: {{review.date}} Rating: {{review.rating}}/5</div>
+        <div>{{review.user}} says "{{review.comment}}"</div>
+    </div>
+    <h3>Write a Review</h3>
+
+    <form ng-submit="saveReview()">
+        <input type="text" placeholder="Your Name"/>
+        <input type="text" placeholder="rating out of 5"/>
+        <textarea placeholder="Comments"></textarea>
+        <input type="submit" value="Publish Review"/>
+    </form>
+</div>
