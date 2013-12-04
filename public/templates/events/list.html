@@ -1,0 +1,23 @@
+<h1>Events</h1>
+<div ng-repeat="event in events">
+    <h2>{{event.title}}</h2>
+    <p>{{event.description}}</p>
+    <table>
+        <tr>
+            <th>Category</th>
+            <td>{{event.eventCategory}}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{event.location}}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{event.address}}</td>
+        </tr>
+        <tr>
+            <th>Age Range</th>
+            <td>{{event.ageRange}}</td>
+        </tr>
+    </table>
+</div>
