@@ -1,8 +1,9 @@
 <h1>Filter</h1>
-<form action="{{searchUrl}}">
+<form ng-submit="submit()" ng-controller="EventListCtrl">
     <input type="text" ng-model="query.q">
     <input type="hidden" ng-model="query.offset" value="0">
-    <button ng-click="update(filter)">Filter</button>
+    <button ng-click="submit(query)">Filter</button>
+    <!--<input type="submit" id="submit" value="Filter">-->
 </form>
 
 <h1>Events</h1>

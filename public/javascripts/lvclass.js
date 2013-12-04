@@ -27,8 +27,17 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
 })
 
 .controller('EventListCtrl', function($scope, Events) {
-    $scope.events = Events.query({ q: $scope.query.q, offset: $scope.query.offset });
-    $scope.searchUrl = "/#/events";
+    //$scope.events = Events.query({ q: $scope.query.q, offset: $scope.query.offset });
+    $scope.submit = function() {
+        if (this.query) {
+            $scope.events = Events.query({
+                q: this.query.q,
+                offset: this.query.offset
+            });
+        }
+    }
+
+    $scope.events = Events.query();
 })
 
 .controller('EventCtrl', function($scope, $routeParams, Events, Reviews) {
