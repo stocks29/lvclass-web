@@ -17,13 +17,13 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
             templateUrl:'templates/events/event.html'
         })
         .otherwise({
-            "redirectTo": '/search'
+            "redirectTo": '/events'
         });
 })
 
 .controller('EventListCtrl', function($scope, Events) {
-    $scope.events = Events.query();
-    $scope.searchUrl = "/events";
+    $scope.events = Events.query({ q: $scope.query.q, offset: $scope.query.offset });
+    $scope.searchUrl = "/#/events";
 })
 
 .controller('EventCtrl', function($scope, $routeParams, Events) {
