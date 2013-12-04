@@ -1,13 +1,31 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+    font-size: 14px;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #f8f8ff;
 }
 
 h1
 {
-    color: #ffd700;
-    text-align:center;
+    color: #191970;
+    text-align:left;
+}
+
+h2
+{
+    color: #191970;
+    text-align:left;
+}
+
+th
+{
+    text-align: right;
+}
+
+td
+{
+    padding-left: 10px;
+    color: #191970;
 }
 
 a {
