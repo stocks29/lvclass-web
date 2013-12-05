@@ -123,7 +123,7 @@ exports.massage = function(req, res){
         return {
             "startDate": "20" + startDateParts[2] + startDateParts[0] + startDateParts[1],
             "endDate": "20" + endDateParts[2] + endDateParts[0] + endDateParts[1]
-        }
+        };
     };
 
     var splitTime = function(timeRange) {
