@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , apievent = require('./routes/api/event')
   , apireview = require('./routes/api/review')
+  , apicategory = require('./routes/api/category')
   , http = require('http')
   , path = require('path');
 
@@ -37,7 +38,9 @@ mongoose.connect(mongoConnectString);
 app.get('/', routes.index);
 
 // API Endpoints
+app.get('/api/categories', apicategory.list);
 app.get('/api/events', apievent.list);
+app.post('/api/events/massage', apievent.massage);
 app.get('/api/events/:eventId', apievent.event);
 app.get('/api/reviews', apireview.list);
 app.post('/api/reviews', apireview.saveReview);

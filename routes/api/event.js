@@ -18,7 +18,8 @@ var Event = mongoose.model('Event', {
     contactNumber: String,
     address: String,
     mapUrl: String,
-    eventCategory: String
+    eventCategory: String,
+    categories: Array
 });
 
 exports.list = function(req, res){
@@ -64,6 +65,55 @@ exports.event = function(req, res){
             } else {
                 res.send({"error": "Event does not exist"} , 404);
             }
+        }
+    });
+};
+
+exports.massage = function(req, res){
+
+    var massageCategory = function(category){
+        var categoriesList = [];
+
+        if (category) {
+            if (category == 'TEEN') {
+                categoriesList.push({name:'Teen'});
+            } else if (category == 'ADULT') {
+                categoriesList.push({name:'Adult'});
+            } else if (category == 'T/A') {
+                categoriesList.push({name:'Teen'});
+                categoriesList.push({name:'Adult'});
+            } else if (category == 'SR') {
+                categoriesList.push({name:'Senior'});
+            } else if (category == '5&U') {
+                categoriesList.push({name:'Youth'});
+            }
+        }
+
+        return categoriesList;
+    };
+
+    var massageEvents = function(events, finalCallback){
+        var event = events.shift();
+        event.categories = massageCategory(event.eventCategory);
+        event.save(function(){
+            if (events.length > 0) {
+                process.nextTick(function(){
+                    massageEvents(events, finalCallback);
+                })
+            } else {
+                finalCallback();
+            }
+        });
+    };
+
+    Event.find(function(error,events){
+        if (error) {
+            console.log("Error fetching data: " + error);
+            res.send({"error": "Unable to retrieve data"}, 500);
+        } else {
+            massageEvents(events, function(){
+                res.send(200);
+            });
         }
     });
 };
