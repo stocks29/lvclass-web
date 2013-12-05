@@ -27,20 +27,54 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
 
 })
 
-.controller('EventQueryCtrl', function($scope, Events) {
-    $scope.query = function() {
-        if (this.query) {
-            $scope.events.data = Events.query({
-                'q': this.query.q,
-                'offset': this.query.offset
-            });
+.controller('EventListCtrl', function($scope, Events) {
+
+    //initialization
+    $scope.initialize = function() {
+        if (!$scope.events) {
+            $scope.events = {};
+        }
+
+        if (!$scope.pageData) {
+            $scope.pageData = {
+                offset: 0,
+                totalResults: 0,
+                pageSize: 50
+            }
+        }
+
+        if (!$scope.queryParams) {
+            $scope.queryParams = {};
         }
     }
-})
 
-.controller('EventListCtrl', function($scope, Events) {
-    $scope.events = {};
-    $scope.events.data = Events.query();
+    $scope.query = function() {
+        //get the filter query
+        if (this.query) {
+            $scope.queryParams.q = this.query.q;
+        }
+
+        $scope.resetPage();
+    }
+
+    $scope.resetPage = function() {
+        $scope.pageData.offset = 0;
+        $scope.queryParams.offset = $scope.pageData.offset;
+        $scope.loadData();
+    }
+
+    $scope.nextPage = function() {
+        $scope.pageData.offset += $scope.pageData.pageSize;
+        $scope.queryParams.offset = $scope.pageData.offset;
+        $scope.loadData();
+    }
+
+    $scope.loadData = function() {
+        $scope.events.data = Events.query($scope.queryParams);
+    }
+
+    $scope.initialize();
+    $scope.loadData();
 })
 
 .controller('EventCtrl', function($scope, $routeParams, Events, Reviews) {

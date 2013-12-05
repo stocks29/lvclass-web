@@ -9,7 +9,7 @@ exports.list = function(req, res){
 
     var queryUrl = 'http://demo.ckan.org/api/action/datastore_search?resource_id=acfa8820-38bf-435b-8afb-9c5b9f59013b&limit=50';
     queryUrl += (req.query.q ? '&q=' + req.query.q : '');
-    queryUrl += (req.query.offset ? '&q=' + req.query.offset : '');
+    queryUrl += (req.query.offset ? '&offset=' + req.query.offset : '');
 
     request(queryUrl, function (error, response, body) {
         if (!error && response.statusCode == 200) {
