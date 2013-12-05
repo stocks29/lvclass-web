@@ -53,12 +53,16 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         } else {
             $scope.queryParams.offset = 0;
         }
+        if ($scope.queryParams.category == "undefined" || $scope.queryParams.category == "All") {
+            delete $scope.queryParams.category;
+        }
     };
 
     $scope.query = function() {
         //get the filter query
         if (this.queryParams) {
             $scope.queryParams.q = this.queryParams.q;
+            $scope.queryParams.category = this.queryParams.category;
         }
 
         $location.search($scope.queryParams);

@@ -25,7 +25,13 @@ exports.list = function(req, res){
 
     var searchTerm = req.query.q;
     var offset     = req.query.offset;
-    var queryOptions  = (offset) ? {'skip': offset} : null;
+    var category   = req.query.category;
+
+    var queryOptions = {};
+    if (offset)
+        queryOptions.skip = offset;
+    if (category && category != "All")
+        queryOptions["categories.name"] = category;
 
     var dbQuery = Event.find(null, null, queryOptions);
     dbQuery.limit(50);

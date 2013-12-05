@@ -8,9 +8,16 @@
             <ul class="nav navbar-nav">
                 <form class="input-group" ng-submit="query()"  ng-controller="EventListCtrl">
                     <input type="text" class="form-control" ng-model="queryParams.q"  value="" placeholder="Search">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Go</button>
-            </span>
+                    <select ng-model="queryParams.category">
+                        <option ng-selected="!queryParams.category">All</option>
+                        <option ng-selected="queryParams.category == 'Senior'">Senior</option>
+                        <option ng-selected="queryParams.category == 'Adult'">Adult</option>
+                        <option ng-selected="queryParams.category == 'Teen'">Teen</option>
+                        <option ng-selected="queryParams.category == 'Youth'">Youth</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go</button>
+                    </span>
                 </form>
             </ul>
             <ul class="nav navbar-right" ng-controller="EventListCtrl">
