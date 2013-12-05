@@ -1,57 +1,56 @@
 <div class="container">
-<div class="header">
-    <div class="title">
-        <h1>Las Vegas Classes</h1>
-    </div>
-    <nav class="navbar navbar-default topnav" role="navigation">
-        <div class="collapse navbar-collapse">
-            <div class="nav navbar-nav">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <form class="navbar-form navbar-left" ng-submit="query()"  ng-controller="EventListCtrl">
-                            <div class="input-group">
-                                <input type="text" class="form-control" ng-model="queryParams.q"  value="" placeholder="Search">
+        <div class="title">
+            <h1>Las Vegas Classes</h1>
+        </div>
+        <nav class="navbar navbar-default topnav" role="navigation">
+            <div class="collapse navbar-collapse">
+                <div class="nav navbar-nav">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <form class="navbar-form navbar-left" ng-submit="query()"  ng-controller="EventListCtrl">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="queryParams.q"  value="" placeholder="Search">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit">Go</button>
                                 </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-5">
+                            Sorting goes here!
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="nav navbar-right" ng-controller="EventListCtrl">
+                                <button class="btn btn-default navbar-btn" ng-click="prevPage()" ng-disabled="pageData.offset <= 0">&lt;&lt; Prev Page</button>
+                                <span>{{queryParams.offset + 1}} to {{queryParams.offset + events.data.length}}</span>
+                                <button class="btn btn-default navbar-btn" ng-click="nextPage()" ng-disabled="events.data.length < pageData.pageSize">Next Page &gt;&gt;</button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-5">
-                        Sorting goes here!
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="nav navbar-right" ng-controller="EventListCtrl">
-                            <button class="btn btn-default navbar-btn" ng-click="prevPage()" ng-disabled="pageData.offset <= 0">&lt;&lt; Prev Page</button>
-                            <span>{{queryParams.offset + 1}} to {{queryParams.offset + events.data.length}}</span>
-                            <button class="btn btn-default navbar-btn" ng-click="nextPage()" ng-disabled="events.data.length < pageData.pageSize">Next Page &gt;&gt;</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
-    <div class="row content">
-        <div class="col-lg-3 filters">
-            <h2>Filters</h2>
-            <hr/>
-            <form ng-controller="EventListCtrl" ng-submit="query()">
-                <div class="form-group">
-                    <label class="control-label">Category</label>
-                    <select class="form-control" ng-model="queryParams.category">
-                        <option ng-selected="!queryParams.category">All</option>
-                        <option ng-selected="queryParams.category == 'Senior'">Senior</option>
-                        <option ng-selected="queryParams.category == 'Adult'">Adult</option>
-                        <option ng-selected="queryParams.category == 'Teen'">Teen</option>
-                        <option ng-selected="queryParams.category == 'Youth'">Youth</option>
-                    </select>
-                </div>
+        </nav>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="filters">
+                <h2>Filters</h2>
                 <hr/>
-                <button type="submit" class="btn">Update</button>
-            </form>
+                <form ng-controller="EventListCtrl" ng-submit="query()">
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select class="form-control" ng-model="queryParams.category">
+                            <option ng-selected="!queryParams.category">All</option>
+                            <option ng-selected="queryParams.category == 'Senior'">Senior</option>
+                            <option ng-selected="queryParams.category == 'Adult'">Adult</option>
+                            <option ng-selected="queryParams.category == 'Teen'">Teen</option>
+                            <option ng-selected="queryParams.category == 'Youth'">Youth</option>
+                        </select>
+                    </div>
+                    <hr/>
+                    <button type="submit" class="btn">Update</button>
+                </form>
+            </div>
         </div>
-
         <div class="col-lg-9">
             <div class="repeater" ng-repeat="event in events.data">
 
