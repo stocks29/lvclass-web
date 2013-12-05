@@ -27,6 +27,7 @@ exports.list = function(req, res){
     var searchTerm = req.query.q;
     var offset     = req.query.offset;
     var category   = req.query.category;
+    var daysOfWeek = req.query.daysOfWeek;
 
     var queryOptions = offset? {"skip": offset} : null;
 
