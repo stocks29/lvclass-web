@@ -1,11 +1,13 @@
-<h1>Filter</h1>
+<div class="header">
+<h1>Events</h1>
+<h2>Filter</h2>
 <form ng-submit="query()" ng-controller="EventListCtrl">
     <input type="text" ng-model="query.q">
     <input type="submit" value="Filter">
 </form>
+</div>
 
-<h1>Events</h1>
-<div ng-controller="EventListCtrl">
+<div class="pages" ng-controller="EventListCtrl">
     <button ng-click="prevPage()" ng-disabled="pageData.offset <= 0">&lt;&lt; Prev Page</button>
     <button ng-click="nextPage()">Next Page &gt;&gt;</button>
 </div>
