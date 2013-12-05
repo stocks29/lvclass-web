@@ -69,6 +69,17 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         $scope.loadData();
     };
 
+    $scope.prevPage = function() {
+        if ($scope.pageData.offset < $scope.pageData.pageSize) {
+            $scope.pageData.offset = 0;
+        } else {
+            $scope.pageData.offset -= $scope.pageData.pageSize;
+        }
+
+        $scope.queryParams.offset = $scope.pageData.offset;
+        $scope.loadData();
+    };
+
     $scope.loadData = function() {
         $scope.events.data = Events.query($scope.queryParams);
     };
