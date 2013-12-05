@@ -28,6 +28,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// Setup database
+var mongoConnectString = process.env.MONGO_CONNECT_STRING;
+var mongoose = require('mongoose');
+mongoose.connect(mongoConnectString);
+
 // Application Endpoints
 app.get('/', routes.index);
 
