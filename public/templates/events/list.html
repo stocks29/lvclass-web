@@ -8,7 +8,8 @@
 
 <div class="pages" ng-controller="EventListCtrl">
     <button ng-click="prevPage()" ng-disabled="pageData.offset <= 0">&lt;&lt; Prev Page</button>
-    <button ng-click="nextPage()">Next Page &gt;&gt;</button>
+    <span>{{pageData.offset + 1}} to {{pageData.offset + events.data.length}}</span>
+    <button ng-click="nextPage()" ng-disabled="events.data.length < pageData.pageSize">Next Page &gt;&gt;</button>
 </div>
 
 <div class="repeater" ng-repeat="event in events.data">
