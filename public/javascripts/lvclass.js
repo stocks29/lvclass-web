@@ -50,6 +50,8 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         }
         if ($scope.queryParams.offset) {
             $scope.queryParams.offset = parseInt($scope.queryParams.offset);
+        } else {
+            $scope.queryParams.offset = 0;
         }
     };
 
