@@ -37,55 +37,55 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
         if (!$scope.pageData) {
             $scope.pageData = {
-                offset: 0,
-                totalResults: 0,
                 pageSize: 50
             }
         }
 
+        $scope.queryParams = $location.search();
         if (!$scope.queryParams) {
             $scope.queryParams = {};
+        }
+        if ($scope.queryParams.q == "undefined") {
+            delete $scope.queryParams.q;
+        }
+        if ($scope.queryParams.offset) {
+            $scope.queryParams.offset = parseInt($scope.queryParams.offset);
         }
     };
 
     $scope.query = function() {
         //get the filter query
-        if (this.query) {
-            $scope.queryParams.q = this.query.q;
+        if (this.queryParams) {
+            $scope.queryParams.q = this.queryParams.q;
         }
-//        $location.search($scope.queryParams);
-        $scope.resetPage();
+
+        $location.search($scope.queryParams);
     };
 
     $scope.resetPage = function() {
-        $scope.pageData.offset = 0;
-        $scope.queryParams.offset = $scope.pageData.offset;
-        $scope.loadData();
+        $scope.queryParams.offset = 0;
+        $location.search($scope.queryParams);
     };
 
     $scope.nextPage = function() {
-        $scope.pageData.offset += $scope.pageData.pageSize;
-        $scope.queryParams.offset = $scope.pageData.offset;
-        $scope.loadData();
+        $scope.queryParams.offset += $scope.pageData.pageSize;
+        $location.search($scope.queryParams);
     };
 
     $scope.prevPage = function() {
-        if ($scope.pageData.offset < $scope.pageData.pageSize) {
-            $scope.pageData.offset = 0;
+        if ($scope.queryParams.offset < $scope.pageData.pageSize) {
+            $scope.queryParams.offset = 0;
         } else {
-            $scope.pageData.offset -= $scope.pageData.pageSize;
+            $scope.queryParams.offset -= $scope.pageData.pageSize;
         }
 
-        $scope.queryParams.offset = $scope.pageData.offset;
-        $scope.loadData();
-    };
-
-    $scope.loadData = function() {
-        $scope.events.data = Events.query($scope.queryParams);
+        $location.search($scope.queryParams);
     };
 
     $scope.initialize();
-    $scope.loadData();
+
+    //load the data
+    $scope.events.data = Events.query($scope.queryParams);
 })
 
 .controller('EventCtrl', function($scope, $routeParams, Events, Reviews) {
