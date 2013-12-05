@@ -1,4 +1,4 @@
-angular.module('lvclass', ['ngRoute', 'ngResource'])
+angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
 .value('eventsUrl', '/api/events')
 .value('reviewsUrl', '/api/reviews')
@@ -95,14 +95,17 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         $scope.reviews = Reviews.query({eventId: $routeParams.eventId});
     };
 
-    $scope.refreshReviews();
+    $scope.resetReviewForm = function() {
+        $scope.newReview = {"rating": 3};
+    }
 
-    $scope.newReview = {};
+    $scope.refreshReviews();
+    $scope.resetReviewForm();
 
     $scope.saveReview = function() {
-        $scope.newReview.eventId = $scope.event.eventId;
+        $scope.newReview.eventId = $scope.event._id;
         Reviews.save($scope.newReview);
-        $scope.newReview = {};
         $scope.refreshReviews();
+        $scope.resetReviewForm();
     };
 });

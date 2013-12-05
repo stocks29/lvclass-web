@@ -46,21 +46,38 @@
     </div>
     <h3>Write a Review</h3>
 
-    <form ng-submit="saveReview()">
-        <table>
-            <tr>
-                <th>Your Name</th>
-                <td><input ng-model="newReview.user" type="text" placeholder="Your Name"/></td>
-            </tr>
-            <tr>
-                <th>Rating</th>
-                <td><input ng-model="newReview.rating" type="text" placeholder="rating out of 5"/></td>
-            </tr>
-            <tr>
-                <th>Comments</th>
-                <td><textarea ng-model="newReview.comment" placeholder="Comments"></textarea></td>
-            </tr>
-        </table>
-        <input type="submit" value="Publish Review"/>
+    <form ng-submit="saveReview()" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="reviewUser" class="col-sm-2 control-label">Your Name</label>
+            <div class="col-sm-10">
+                <input ng-model="newReview.user" id="reviewUser" type="text" class="form-control" placeholder="John Q"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reviewRating" class="col-sm-2 control-label">Rating</label>
+            <div class="col-sm-10">
+                <div class="btn-group" id="reviewRating">
+                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="1">1</button>
+                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="2">2</button>
+                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="3">3</button>
+                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="4">4</button>
+                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="5">5</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reviewComment" class="col-sm-2 control-label">Comment</label>
+            <div class="col-sm-10">
+                <textarea ng-model="newReview.comment" id="reviewComment" class="form-control" placeholder="The class was..."></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" type="submit">Publish Review</button>
+            </div>
+        </div>
     </form>
 </div>
