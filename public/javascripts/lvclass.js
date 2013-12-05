@@ -24,20 +24,23 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         .otherwise({
             "redirectTo": '/events'
         });
+
 })
 
-.controller('EventListCtrl', function($scope, Events) {
-    //$scope.events = Events.query({ q: $scope.query.q, offset: $scope.query.offset });
-    $scope.submit = function() {
+.controller('EventQueryCtrl', function($scope, Events) {
+    $scope.query = function() {
         if (this.query) {
-            $scope.events = Events.query({
-                q: this.query.q,
-                offset: this.query.offset
+            $scope.events.data = Events.query({
+                'q': this.query.q,
+                'offset': this.query.offset
             });
         }
     }
+})
 
-    $scope.events = Events.query();
+.controller('EventListCtrl', function($scope, Events) {
+    $scope.events = {};
+    $scope.events.data = Events.query();
 })
 
 .controller('EventCtrl', function($scope, $routeParams, Events, Reviews) {
