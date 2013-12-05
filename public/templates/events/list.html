@@ -32,16 +32,22 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 filters">
             <h2>Filters</h2>
+            <hr/>
                 <form ng-controller="EventListCtrl" ng-submit="query()">
-                    <select class="form-control" ng-model="queryParams.category">
-                        <option ng-selected="!queryParams.category">All</option>
-                        <option ng-selected="queryParams.category == 'Senior'">Senior</option>
-                        <option ng-selected="queryParams.category == 'Adult'">Adult</option>
-                        <option ng-selected="queryParams.category == 'Teen'">Teen</option>
-                        <option ng-selected="queryParams.category == 'Youth'">Youth</option>
-                    </select>
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select class="form-control" ng-model="queryParams.category">
+                            <option ng-selected="!queryParams.category">All</option>
+                            <option ng-selected="queryParams.category == 'Senior'">Senior</option>
+                            <option ng-selected="queryParams.category == 'Adult'">Adult</option>
+                            <option ng-selected="queryParams.category == 'Teen'">Teen</option>
+                            <option ng-selected="queryParams.category == 'Youth'">Youth</option>
+                        </select>
+                    </div>
+                    <hr/>
+                    <button type="submit" class="btn">Update</button>
                 </form>
         </div>
 
