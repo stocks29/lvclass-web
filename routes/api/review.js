@@ -1,9 +1,7 @@
 
-var mongoConnectString = process.env.MONGO_CONNECT_STRING;
 var mongoose = require('mongoose');
-mongoose.connect(mongoConnectString);
 
-var Review = mongoose.model('Review', { comment: String, rating: Number, user: String, date: Date, eventId: Number });
+var Review = mongoose.model('Review', { comment: String, rating: Number, user: String, date: Date, eventId: String });
 
 exports.saveReview = function(req, res){
     var reviewData = req.body;

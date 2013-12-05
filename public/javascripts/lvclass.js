@@ -46,7 +46,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         if (!$scope.queryParams) {
             $scope.queryParams = {};
         }
-    }
+    };
 
     $scope.query = function() {
         //get the filter query
@@ -55,23 +55,23 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         }
 
         $scope.resetPage();
-    }
+    };
 
     $scope.resetPage = function() {
         $scope.pageData.offset = 0;
         $scope.queryParams.offset = $scope.pageData.offset;
         $scope.loadData();
-    }
+    };
 
     $scope.nextPage = function() {
         $scope.pageData.offset += $scope.pageData.pageSize;
         $scope.queryParams.offset = $scope.pageData.offset;
         $scope.loadData();
-    }
+    };
 
     $scope.loadData = function() {
         $scope.events.data = Events.query($scope.queryParams);
-    }
+    };
 
     $scope.initialize();
     $scope.loadData();
@@ -89,7 +89,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
     $scope.newReview = {};
 
     $scope.saveReview = function() {
-        $scope.newReview.eventId = $scope.event._id;
+        $scope.newReview.eventId = $scope.event.eventId;
         Reviews.save($scope.newReview);
         $scope.newReview = {};
         $scope.refreshReviews();
