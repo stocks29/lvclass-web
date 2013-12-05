@@ -28,11 +28,7 @@ exports.list = function(req, res){
     var offset     = req.query.offset;
     var category   = req.query.category;
 
-    var queryOptions = {};
-    if (offset)
-        queryOptions.skip = offset;
-    if (category && category != "All")
-        queryOptions["categories.name"] = category;
+    var queryOptions = offset? {"skip": offset} : null;
 
     var dbQuery = Event.find(null, null, queryOptions);
     dbQuery.limit(50);
@@ -40,6 +36,10 @@ exports.list = function(req, res){
     if (searchTerm) {
         var searchRe = new RegExp(searchTerm, "i");
         dbQuery.or([{'description': searchRe}, {'title': searchRe}]);
+    }
+    if (category && category != "All") {
+        var categoryRe = new RegExp(category, "i");
+        dbQuery.where({'categories.name': categoryRe});
     }
 
     dbQuery.exec(function(error, events) {
