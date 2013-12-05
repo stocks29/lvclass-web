@@ -1,83 +1,87 @@
-<h2>{{event.title}}</h2>
-<p>{{event.description}}</p>
-<table>
-    <tr>
-        <th>Category</th>
-        <td>{{event.eventCategory}}</td>
-    </tr>
-    <tr>
-        <th>Location</th>
-        <td><a href="{{event.mapUrl}}" target="_blank">{{event.location}}</a></td>
-    </tr>
-    <tr>
-        <th>Address</th>
-        <td>{{event.address}}</td>
-    </tr>
-    <tr>
-        <th>Age Range</th>
-        <td>{{event.ageRange}}</td>
-    </tr>
-    <tr>
-        <th>Day of Week</th>
-        <td>{{event.dayOfWeek}}</td>
-    </tr>
-    <tr>
-        <th>Time of Day</th>
-        <td>{{event.timeOfDay}}</td>
-    </tr>
-    <tr>
-        <th>Fee</th>
-        <td>{{event.fee}}</td>
-    </tr>
-    <tr>
-        <th>Contact Number</th>
-        <td>{{event.contactNumber}}</td>
-    </tr>
-</table>
-<div>
-    <h3>Reviews</h3>
+<div class="container">
+    <div class="repeater">
+        <h2>{{event.title}}</h2>
+        <p>{{event.description}}</p>
+        <table class="table-striped">
+            <tr>
+                <th>Category</th>
+                <td>{{event.eventCategory}}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td><a href="{{event.mapUrl}}" target="_blank">{{event.location}}</a></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{event.address}}</td>
+            </tr>
+            <tr>
+                <th>Age Range</th>
+                <td>{{event.ageRange}}</td>
+            </tr>
+            <tr>
+                <th>Day of Week</th>
+                <td>{{event.dayOfWeek}}</td>
+            </tr>
+            <tr>
+                <th>Time of Day</th>
+                <td>{{event.timeOfDay}}</td>
+            </tr>
+            <tr>
+                <th>Fee</th>
+                <td>{{event.fee}}</td>
+            </tr>
+            <tr>
+                <th>Contact Number</th>
+                <td>{{event.contactNumber}}</td>
+            </tr>
+        </table>
+        <div>
+            <h3>Reviews</h3>
 
-    <div ng-show="reviews.length < 1">Be the first to write a review!</div>
-    <div ng-repeat="review in reviews">
-        <div>Date: {{review.date}}</div>
-        <div>Rating: {{review.rating}}/5</div>
-        <div>{{review.user}} says "{{review.comment}}"</div>
-        <br>
-    </div>
-    <h3>Write a Review</h3>
-
-    <form ng-submit="saveReview()" class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="reviewUser" class="col-sm-2 control-label">Your Name</label>
-            <div class="col-sm-10">
-                <input ng-model="newReview.user" id="reviewUser" type="text" class="form-control" placeholder="John Q"/>
+            <div ng-show="reviews.length < 1">Be the first to write a review!</div>
+            <div ng-repeat="review in reviews">
+                <div>Date: {{review.date}}</div>
+                <div>Rating: {{review.rating}}/5</div>
+                <div>{{review.user}} says "{{review.comment}}"</div>
+                <br>
             </div>
-        </div>
+            <h3>Write a Review</h3>
 
-        <div class="form-group">
-            <label for="reviewRating" class="col-sm-2 control-label">Rating</label>
-            <div class="col-sm-10">
-                <div class="btn-group" id="reviewRating">
-                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="1">1</button>
-                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="2">2</button>
-                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="3">3</button>
-                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="4">4</button>
-                    <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="5">5</button>
+            <form ng-submit="saveReview()" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="reviewUser" class="col-sm-2 control-label">Your Name</label>
+                    <div class="col-sm-10">
+                        <input ng-model="newReview.user" id="reviewUser" type="text" class="form-control" placeholder="John Q"/>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="reviewComment" class="col-sm-2 control-label">Comment</label>
-            <div class="col-sm-10">
-                <textarea ng-model="newReview.comment" id="reviewComment" class="form-control" placeholder="The class was..."></textarea>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="reviewRating" class="col-sm-2 control-label">Rating</label>
+                    <div class="col-sm-10">
+                        <div class="btn-group" id="reviewRating">
+                            <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="1">1</button>
+                            <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="2">2</button>
+                            <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="3">3</button>
+                            <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="4">4</button>
+                            <button type="button" class="btn btn-primary" ng-model="newReview.rating" btn-radio="5">5</button>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" type="submit">Publish Review</button>
-            </div>
+                <div class="form-group">
+                    <label for="reviewComment" class="col-sm-2 control-label">Comment</label>
+                    <div class="col-sm-10">
+                        <textarea ng-model="newReview.comment" id="reviewComment" class="form-control" placeholder="The class was..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" type="submit">Publish Review</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
