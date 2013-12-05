@@ -48,7 +48,7 @@ exports.list = function(req, res){
 exports.event = function(req, res){
     var eventId = req.params.eventId;
 
-    Event.findOne({ "eventId": eventId }, function(error, event) {
+    Event.findOne({ "_id": eventId }, function(error, event) {
         if (error) {
             console.log("Error fetching data: " + error);
             res.send({ "error": "Unable to retrieve data"}, 500);
