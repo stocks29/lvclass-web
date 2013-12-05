@@ -27,7 +27,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
 
 })
 
-.controller('EventListCtrl', function($scope, Events) {
+.controller('EventListCtrl', function($scope, $location, Events) {
 
     //initialization
     $scope.initialize = function() {
@@ -53,7 +53,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource'])
         if (this.query) {
             $scope.queryParams.q = this.query.q;
         }
-
+//        $location.search($scope.queryParams);
         $scope.resetPage();
     };
 
