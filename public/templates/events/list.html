@@ -17,6 +17,9 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-lg-5">
+                          Sorting goes here!
+                    </div>
                     <div class="col-lg-4">
                         <div class="nav navbar-right" ng-controller="EventListCtrl">
                             <button class="btn btn-default navbar-btn" ng-click="prevPage()" ng-disabled="pageData.offset <= 0">&lt;&lt; Prev Page</button>
@@ -30,21 +33,18 @@
     </nav>
     <div class="row">
         <div class="col-lg-3">
-            <form ng-controller="EventListCtrl" ng-submit="query()">
-                <select ng-model="queryParams.category">
-                    <option ng-selected="!queryParams.category">All</option>
-                    <option ng-selected="queryParams.category == 'Senior'">Senior</option>
-                    <option ng-selected="queryParams.category == 'Adult'">Adult</option>
-                    <option ng-selected="queryParams.category == 'Teen'">Teen</option>
-                    <option ng-selected="queryParams.category == 'Youth'">Youth</option>
-                </select>
-            </form>
-            <h2>Filter</h2>
-            <h3>Stuff</h3>
-            <h3>Stuff</h3>
-            <h3>Stuff</h3>
-            <h3>Stuff</h3>
+            <h2>Filters</h2>
+                <form ng-controller="EventListCtrl" ng-submit="query()">
+                    <select class="form-control" ng-model="queryParams.category">
+                        <option ng-selected="!queryParams.category">All</option>
+                        <option ng-selected="queryParams.category == 'Senior'">Senior</option>
+                        <option ng-selected="queryParams.category == 'Adult'">Adult</option>
+                        <option ng-selected="queryParams.category == 'Teen'">Teen</option>
+                        <option ng-selected="queryParams.category == 'Youth'">Youth</option>
+                    </select>
+                </form>
         </div>
+
         <div class="col-lg-9">
             <div class="repeater" ng-repeat="event in events.data">
 
