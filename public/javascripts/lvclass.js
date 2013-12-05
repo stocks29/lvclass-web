@@ -65,10 +65,6 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             $scope.queryParams.category = this.queryParams.category;
         }
 
-        $location.search($scope.queryParams);
-    };
-
-    $scope.resetPage = function() {
         $scope.queryParams.offset = 0;
         $location.search($scope.queryParams);
     };
