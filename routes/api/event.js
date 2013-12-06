@@ -37,9 +37,11 @@ exports.list = function(req, res){
         dbQuery.sort(sortOptions);
     }
 
+    var andCriteria = [];
+
     if (searchTerm) {
         var searchRe = new RegExp(searchTerm, "i");
-        dbQuery.or([{'description': searchRe}, {'title': searchRe}]);
+        andCriteria.push({ '$or': [{'description': searchRe}, {'title': searchRe}] });
     }
     if (category && category != "All") {
         var categoryRe = new RegExp(category, "i");
@@ -96,9 +98,16 @@ exports.list = function(req, res){
         if (daysOfWeekSa === false) queryNotArray.push({'days.short': {$ne: 'Sa'}});
         if (daysOfWeekSu === false) queryNotArray.push({'days.short': {$ne: 'Su'}});
 
-        if (queryHasArray.length > 0) dbQuery.or(queryHasArray);
-        if (queryNotArray.length > 0) dbQuery.and(queryNotArray);
+        if (queryHasArray.length > 0) {
+            andCriteria.push({ '$or': queryHasArray });
+        }
+
+        if (queryNotArray.length > 0) {
+            andCriteria.push({ '$and': queryNotArray });
+        }
     }
+
+    dbQuery.and(andCriteria);
 
     dbQuery.exec(function(error, events) {
         if (error) {
