@@ -53,6 +53,19 @@ td
     margin-bottom: 10px;
 }
 
+.emboss {
+    font-size:4em;
+    padding:50px;
+    font-weight:bold;
+    display:block;
+    font-family: arial, sans-serif;
+}
+.dark {
+    text-align: center;
+    color:#444444;
+    text-shadow:1px 1px 0px rgba(255,255,255,0.9);
+}
+
 a {
   color: blue;
 }
