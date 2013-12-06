@@ -3,27 +3,27 @@
         <h2>{{event.title}}</h2>
         <p>{{event.description}}</p>
         <table class="table-striped">
-            <tr>
+            <tr ng-show="event.eventCategory">
                 <th>Category</th>
                 <td>{{event.eventCategory}}</td>
             </tr>
-            <tr>
+            <tr ng-show="event.location">
                 <th>Location</th>
                 <td><a href="{{event.mapUrl}}" target="_blank">{{event.location}}</a></td>
             </tr>
-            <tr>
+            <tr ng-show="event.address">
                 <th>Address</th>
                 <td>{{event.address}}</td>
             </tr>
-            <tr>
+            <tr ng-show="event.ageRange">
                 <th>Age Range</th>
                 <td>{{event.ageRange}}</td>
             </tr>
-            <tr>
+            <tr ng-show="event.dayOfWeek">
                 <th>Day of Week</th>
                 <td>{{event.dayOfWeek}}</td>
             </tr>
-            <tr>
+            <tr ng-show="event.timeOfDay">
                 <th>Time of Day</th>
                 <td>{{event.timeOfDay}}</td>
             </tr>
@@ -31,9 +31,13 @@
                 <th>Fee</th>
                 <td>${{event.fee}}</td>
             </tr>
-            <tr>
+            <tr ng-show="event.contactNumber">
                 <th>Contact Number</th>
                 <td>{{event.contactNumber}}</td>
+            </tr>
+            <tr ng-show="event.averageRating > 0">
+                <th>Average Rating</th>
+                <td>{{event.averageRating.toFixed(1)}} / 5 </td>
             </tr>
         </table>
         <div>

@@ -124,15 +124,16 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
         $scope.resetReviewForm = function() {
             $scope.newReview = {"rating": 3};
-        }
+        };
 
         $scope.refreshReviews();
         $scope.resetReviewForm();
 
         $scope.saveReview = function() {
             $scope.newReview.eventId = $scope.event._id;
-            Reviews.save($scope.newReview);
-            $scope.refreshReviews();
-            $scope.resetReviewForm();
+            Reviews.save($scope.newReview, function(){
+                $scope.refreshReviews();
+                $scope.resetReviewForm();
+            });
         };
     });

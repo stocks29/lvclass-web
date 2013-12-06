@@ -20,7 +20,8 @@ var Event = mongoose.model('Event', {
     mapUrl: String,
     eventCategory: String,
     categories: Array,
-    days: Array
+    days: Array,
+    averageRating: Number
 });
 
 var Review = mongoose.model('Review', {
