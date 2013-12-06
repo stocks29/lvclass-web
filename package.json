@@ -9,7 +9,6 @@
     "express": "3.3.4",
     "jade": "*",
     "mongoose": "3.8.1",
-    "request": "2.29.0",
-    "forever": "0.10.10"
+    "request": "2.29.0"
   }
 }
