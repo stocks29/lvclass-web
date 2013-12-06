@@ -207,6 +207,9 @@ exports.massage = function(req, res){
             if (aOrP == "P") {
                 timeParts[0] = parseInt(timeParts[0]) + 12;
             }
+            if (timeParts[0] < 10) {
+                timeParts[0] = '0' + timeParts[0];
+            }
             resultTimes.push(timeParts[0] + ':' + timeParts[1]);
         });
 
@@ -327,4 +330,4 @@ var parseBool = function(val) {
     }
 
     return undefined;
-}
+};

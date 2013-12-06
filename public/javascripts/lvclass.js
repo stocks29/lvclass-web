@@ -2,6 +2,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
     .value('eventsUrl', '/api/events')
     .value('reviewsUrl', '/api/reviews')
+    .value('registrationsUrl', '/api/registrations')
 
     .factory('Events', function($resource, eventsUrl) {
         return $resource(eventsUrl + '/:eventId');
@@ -9,6 +10,10 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
     .factory('Reviews', function($resource, reviewsUrl) {
         return $resource(reviewsUrl + '/:reviewId');
+    })
+
+    .factory('Registrations', function($resource, registrationsUrl) {
+        return $resource(registrationsUrl);
     })
 
     .config(function($routeProvider) {
@@ -175,7 +180,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         };
     })
 
-    .controller('RegisterCtrl', function($scope, $routeParams, Events){
+    .controller('RegisterCtrl', function($scope, $routeParams, $window, Events, Registrations){
 
         $scope.registrationForm = {
             participants: [{}],
@@ -220,6 +225,8 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         };
 
         $scope.createRegistrationForm = function() {
-            console.log($scope.registrationForm);
+            Registrations.save($scope.registrationForm, function(res) {
+                $window.open(res.formUrl);
+            });
         };
     });

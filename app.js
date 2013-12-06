@@ -8,6 +8,7 @@ var express = require('express')
   , apievent = require('./routes/api/event')
   , apireview = require('./routes/api/review')
   , apicategory = require('./routes/api/category')
+  , apiregistration = require('./routes/api/registration')
   , http = require('http')
   , path = require('path');
 
@@ -44,6 +45,7 @@ app.post('/api/events/massage', apievent.massage);
 app.get('/api/events/:eventId', apievent.event);
 app.get('/api/reviews', apireview.list);
 app.post('/api/reviews', apireview.saveReview);
+app.post('/api/registrations', apiregistration.register);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
