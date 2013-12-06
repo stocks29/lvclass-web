@@ -1,7 +1,6 @@
 
-var mongoose = require('mongoose');
-
-var Review = mongoose.model('Review', { comment: String, rating: Number, user: String, date: Date, eventId: String });
+var models = require('../../models');
+var Review = models.review();
 
 exports.saveReview = function(req, res){
     var reviewData = req.body;
