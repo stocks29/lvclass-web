@@ -90,6 +90,8 @@ exports.massage = function(req, res){
                 categoriesList.push({name:'Senior'});
             } else if (category == '5&U') {
                 categoriesList.push({name:'Youth'});
+            } else if (category == 'YTH') {
+                categoriesList.push({name:'Youth'});
             }
         }
 
