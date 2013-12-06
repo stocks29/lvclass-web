@@ -3,6 +3,10 @@
         <h2>{{event.title}}</h2>
         <p>{{event.description}}</p>
         <table class="table-striped">
+            <tr ng-show="event.eventId">
+                <th>Activity Code</th>
+                <td>{{event.eventId}}</td>
+            </tr>
             <tr ng-show="event.eventCategory">
                 <th>Category</th>
                 <td>{{event.eventCategory}}</td>
@@ -39,9 +43,6 @@
                 <th>Average Rating</th>
                 <td>{{event.averageRating.toFixed(1)}} / 5 </td>
             </tr>
-
-
-
         </table>
 
         <br>

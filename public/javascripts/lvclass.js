@@ -143,6 +143,14 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
     })
 
     .controller('RegisterCtrl', function($scope, $routeParams, Events){
+
+        $scope.registrationForm = {};
+        $scope.event = Events.get({eventId: $routeParams.eventId},function(event){
+            $scope.registrationForm.activity1Code = event.eventId;
+            $scope.registrationForm.activity1Name = event.title;
+            $scope.registrationForm.activity1Fee = event.fee;
+        });
+
         $scope.parseInt = function(number){
             if (!number) {
                 return 0;
@@ -151,10 +159,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             }
         };
 
-        $scope.registrationForm = {};
-        $scope.event = Events.get({eventId: $routeParams.eventId},function(event){
-            $scope.registrationForm.activity1Code = event.eventId;
-            $scope.registrationForm.activity1Name = event.title;
-            $scope.registrationForm.activity1Fee = event.fee;
-        });
+        $scope.createRegistrationForm = function() {
+            console.log($scope.registrationForm);
+        }
     });
