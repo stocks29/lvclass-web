@@ -53,6 +53,31 @@
                             <option ng-selected="queryParams.category == 'Youth'">Youth</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="control-label">Days of Week</label>
+                    </div>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek[m]"> M
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek[t]"> Tu
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek"> W
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek"> Th
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek"> F
+                    </label>
+                    <br/>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek"> Sa
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="queryParams.daysOfWeek"> Su
+                    </label>
                     <hr/>
                     <button type="submit" class="btn">Update</button>
                 </form>

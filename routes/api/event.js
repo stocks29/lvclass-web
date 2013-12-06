@@ -32,6 +32,7 @@ exports.list = function(req, res){
     var searchTerm = req.query.q;
     var offset     = req.query.offset;
     var category   = req.query.category;
+    var daysOfWeek = req.query.daysOfWeek;
     var sortBy     = req.query.sortBy;
     var sortDir    = req.query.sortDir;
 
@@ -39,7 +40,12 @@ exports.list = function(req, res){
 
     dbQuery.limit(50);
     dbQuery.skip(offset ? offset : 0);
-    dbQuery.sort({sortBy : sortDir});
+
+    if (sortBy) {
+        var sortOptions = {};
+        sortOptions[sortBy] = sortDir ? sortDir : "asc";
+        dbQuery.sort(sortOptions);
+    }
 
     if (searchTerm) {
         var searchRe = new RegExp(searchTerm, "i");
