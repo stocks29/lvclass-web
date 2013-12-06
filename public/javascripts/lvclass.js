@@ -38,11 +38,12 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             if (!$scope.events) {
                 $scope.events = {};
             }
+            $scope.events.loaded = false;
 
             if (!$scope.pageData) {
                 $scope.pageData = {
                     pageSize: 50
-                }
+                };
             }
 
             $scope.queryParams = $location.search();
@@ -124,7 +125,9 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         $scope.initialize();
 
         //load the data
-        $scope.events.data = Events.query($scope.queryParams);
+        $scope.events.data = Events.query($scope.queryParams, function() {
+            $scope.events.loaded = true;
+        });
     })
 
     .controller('EventCtrl', function($scope, $routeParams, Events, Reviews) {

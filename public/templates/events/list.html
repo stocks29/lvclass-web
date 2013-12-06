@@ -151,7 +151,10 @@
             </div>
         </div>
         <div class="col-lg-9">
-            <div ng-hide="events.data.length > 0">
+            <div ng-hide="events.loaded">
+                <span class="emboss dark">Loading Results...</span>
+            </div>
+            <div ng-hide="!events.loaded || events.data.length > 0">
                 <span class="emboss dark">No Results Found</span>
             </div>
             <div class="repeater" ng-repeat="event in events.data">
