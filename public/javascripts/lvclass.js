@@ -153,6 +153,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
         $scope.registrationForm = {};
         $scope.event = Events.get({eventId: $routeParams.eventId},function(event){
+            $scope.registrationForm.activity1Code = event.eventId;
             $scope.registrationForm.activity1Name = event.title;
             $scope.registrationForm.activity1Fee = event.fee;
         });
