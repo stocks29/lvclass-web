@@ -73,6 +73,28 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             if ($scope.queryParams.endTime == "undefined" || $scope.queryParams.endTime == "Any") {
                 delete $scope.queryParams.endTime;
             }
+
+            if ($scope.queryParams.daysOfWeekM === undefined) {
+                $scope.queryParams.daysOfWeekM = true;
+            }
+            if ($scope.queryParams.daysOfWeekTu === undefined) {
+                $scope.queryParams.daysOfWeekTu = true;
+            }
+            if ($scope.queryParams.daysOfWeekW === undefined) {
+                $scope.queryParams.daysOfWeekW = true;
+            }
+            if ($scope.queryParams.daysOfWeekTh === undefined) {
+                $scope.queryParams.daysOfWeekTh = true;
+            }
+            if ($scope.queryParams.daysOfWeekF === undefined) {
+                $scope.queryParams.daysOfWeekF = true;
+            }
+            if ($scope.queryParams.daysOfWeekSa === undefined) {
+                $scope.queryParams.daysOfWeekSa = true;
+            }
+            if ($scope.queryParams.daysOfWeekSu === undefined) {
+                $scope.queryParams.daysOfWeekSu = true;
+            }
         };
 
         $scope.query = function() {

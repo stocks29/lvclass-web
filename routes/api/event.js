@@ -12,12 +12,19 @@ exports.list = function(req, res){
     var searchTerm = req.query.q;
     var offset     = req.query.offset;
     var category   = req.query.category;
-    var daysOfWeek = req.query.daysOfWeek;
     var sortBy     = req.query.sortBy;
     var sortDir    = req.query.sortDir;
     var price      = req.query.price;
     var begTime    = req.query.begTime;
     var endTime    = req.query.endTime;
+
+    var daysOfWeekM  = parseBool(req.query.daysOfWeekM);
+    var daysOfWeekTu = parseBool(req.query.daysOfWeekTu);
+    var daysOfWeekW  = parseBool(req.query.daysOfWeekW);
+    var daysOfWeekTh = parseBool(req.query.daysOfWeekTh);
+    var daysOfWeekF  = parseBool(req.query.daysOfWeekF);
+    var daysOfWeekSa = parseBool(req.query.daysOfWeekSa);
+    var daysOfWeekSu = parseBool(req.query.daysOfWeekSu);
 
     var dbQuery = Event.find(null, null, null);
 
@@ -67,6 +74,30 @@ exports.list = function(req, res){
     }
     else if (endTime) {
         dbQuery.where({'startTime':{$lte:endTime}});
+    }
+
+    if (daysOfWeekM || daysOfWeekTu || daysOfWeekW || daysOfWeekTh || daysOfWeekF ||
+        daysOfWeekSa || daysOfWeekSu) {
+        var queryHasArray = [];
+        if (daysOfWeekM)  queryHasArray.push({'days.short': 'M'});
+        if (daysOfWeekTu) queryHasArray.push({'days.short': 'Tu'});
+        if (daysOfWeekW)  queryHasArray.push({'days.short': 'W'});
+        if (daysOfWeekTh) queryHasArray.push({'days.short': 'Th'});
+        if (daysOfWeekF)  queryHasArray.push({'days.short': 'F'});
+        if (daysOfWeekSa) queryHasArray.push({'days.short': 'Sa'});
+        if (daysOfWeekSu) queryHasArray.push({'days.short': 'Su'});
+
+        var queryNotArray = [];
+        if (daysOfWeekM  === false) queryNotArray.push({'days.short': {$ne: 'M'}});
+        if (daysOfWeekTu === false) queryNotArray.push({'days.short': {$ne: 'Tu'}});
+        if (daysOfWeekW  === false) queryNotArray.push({'days.short': {$ne: 'W'}});
+        if (daysOfWeekTh === false) queryNotArray.push({'days.short': {$ne: 'Th'}});
+        if (daysOfWeekF  === false) queryNotArray.push({'days.short': {$ne: 'F'}});
+        if (daysOfWeekSa === false) queryNotArray.push({'days.short': {$ne: 'Sa'}});
+        if (daysOfWeekSu === false) queryNotArray.push({'days.short': {$ne: 'Su'}});
+
+        if (queryHasArray.length > 0) dbQuery.or(queryHasArray);
+        if (queryNotArray.length > 0) dbQuery.and(queryNotArray);
     }
 
     dbQuery.exec(function(error, events) {
@@ -285,3 +316,15 @@ exports.massage = function(req, res){
         }
     });
 };
+
+var parseBool = function(val) {
+    if (val === "true") {
+        return true;
+    }
+
+    if (val === "false") {
+        return false;
+    }
+
+    return undefined;
+}
