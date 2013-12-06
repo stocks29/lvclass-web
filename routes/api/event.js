@@ -16,6 +16,8 @@ exports.list = function(req, res){
     var sortBy     = req.query.sortBy;
     var sortDir    = req.query.sortDir;
     var price      = req.query.price;
+    var begTime    = req.query.begTime;
+    var endTime    = req.query.endTime;
 
     var dbQuery = Event.find(null, null, null);
 
@@ -44,6 +46,27 @@ exports.list = function(req, res){
        else {
            dbQuery.where({'fee':{$lte:price}});
        }
+    }
+
+    if (begTime == "Any") {
+        delete begTime;
+    }
+    if (endTime == "Any") {
+        delete endTime;
+    }
+    if (begTime && endTime) {
+        if (begTime > endTime) {
+            var tempTime = endTime;
+            endTime = begTime;
+            begTime = tempTime;
+        }
+        dbQuery.where({'startTime':{$gte:begTime,$lte:endTime}});
+    }
+    else if (begTime) {
+        dbQuery.where({'startTime':{$gte:begTime}});
+    }
+    else if (endTime) {
+        dbQuery.where({'startTime':{$lte:endTime}});
     }
 
     dbQuery.exec(function(error, events) {
