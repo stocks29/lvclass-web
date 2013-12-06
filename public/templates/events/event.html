@@ -39,11 +39,14 @@
                 <th>Average Rating</th>
                 <td>{{event.averageRating.toFixed(1)}} / 5 </td>
             </tr>
-            <tr>
-                <td></td>
-                <td><a href="#/events/{{event._id}}/register">Register for this {{event.title}}</a></td>
-            </tr>
+
+
+
         </table>
+
+        <br>
+        <div><a class="btn btn-success" href="#/events/{{event._id}}/register">Register for {{event.title}}</a></div>
+
         <div>
             <h3>Reviews</h3>
 
