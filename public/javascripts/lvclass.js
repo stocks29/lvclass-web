@@ -59,7 +59,9 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             if ($scope.queryParams.sortBy == "undefined") {
                 delete $scope.queryParams.sortBy;
             }
-
+            if ($scope.queryParams.price == "undefined" || $scope.queryParams.price == "All") {
+                delete $scope.queryParams.price;
+            }
         };
 
         $scope.query = function() {
@@ -67,6 +69,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             if (this.queryParams) {
                 $scope.queryParams.q = this.queryParams.q;
                 $scope.queryParams.category = this.queryParams.category;
+                $scope.queryParams.price = this.queryParams.price;
             }
 
             $scope.queryParams.offset = 0;

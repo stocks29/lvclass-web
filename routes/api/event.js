@@ -35,6 +35,7 @@ exports.list = function(req, res){
     var daysOfWeek = req.query.daysOfWeek;
     var sortBy     = req.query.sortBy;
     var sortDir    = req.query.sortDir;
+    var price      = req.query.price;
 
     var dbQuery = Event.find(null, null, null);
 
@@ -54,6 +55,15 @@ exports.list = function(req, res){
     if (category && category != "All") {
         var categoryRe = new RegExp(category, "i");
         dbQuery.where({'categories.name': categoryRe});
+    }
+
+    if (price && price != "All") {
+       if (price == 0) {
+           dbQuery.where({'fee':price});
+       }
+       else {
+           dbQuery.where({'fee':{$lte:price}});
+       }
     }
 
     dbQuery.exec(function(error, events) {

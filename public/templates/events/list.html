@@ -79,6 +79,16 @@
                         <input type="checkbox" ng-model="queryParams.daysOfWeek"> Su
                     </label>
                     <hr/>
+                    <div class="form-group">
+                        <label class="control-label">Fee</label>
+                        <select class="form-control" ng-model="queryParams.price">
+                            <option ng-selected="!queryParams.price">All</option>
+                            <option ng-value="0">$0</option>
+                            <option ng-value="20">Up to $20</option>
+                            <option ng-value="40">Up to $40</option>
+                            <option ng-value="60">Up to $60</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn">Update</button>
                 </form>
             </div>
