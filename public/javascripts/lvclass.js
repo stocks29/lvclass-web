@@ -66,6 +66,12 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             if ($scope.queryParams.price == "undefined" || $scope.queryParams.price == "All") {
                 delete $scope.queryParams.price;
             }
+            if ($scope.queryParams.begTime == "undefined" || $scope.queryParams.begTime == "Any") {
+                delete $scope.queryParams.begTime;
+            }
+            if ($scope.queryParams.endTime == "undefined" || $scope.queryParams.endTime == "Any") {
+                delete $scope.queryParams.endTime;
+            }
         };
 
         $scope.query = function() {
@@ -74,6 +80,8 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
                 $scope.queryParams.q = this.queryParams.q;
                 $scope.queryParams.category = this.queryParams.category;
                 $scope.queryParams.price = this.queryParams.price;
+                $scope.queryParams.begTime = this.queryParams.begTime;
+                $scope.queryParams.endTime = this.queryParams.endTime;
             }
 
             $scope.queryParams.offset = 0;
@@ -144,11 +152,15 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
 
     .controller('RegisterCtrl', function($scope, $routeParams, Events){
 
-        $scope.registrationForm = {};
+        $scope.registrationForm = {
+            participants: [{}],
+            classes: [{}]
+        };
+
         $scope.event = Events.get({eventId: $routeParams.eventId},function(event){
-            $scope.registrationForm.activity1Code = event.eventId;
-            $scope.registrationForm.activity1Name = event.title;
-            $scope.registrationForm.activity1Fee = event.fee;
+            $scope.registrationForm.classes[0].code = event.eventId;
+            $scope.registrationForm.classes[0].className = event.title;
+            $scope.registrationForm.classes[0].fee = event.fee;
         });
 
         $scope.parseInt = function(number){
@@ -159,7 +171,30 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             }
         };
 
+        $scope.addParticipant = function() {
+            $scope.registrationForm.participants.push({});
+        };
+
+        $scope.addClass = function() {
+            $scope.registrationForm.classes.push({
+                'code': $scope.event.eventId,
+                'className': $scope.event.title,
+                'fee': $scope.event.fee
+            });
+        };
+
+        $scope.totalFees = function() {
+            var fees = 0;
+            $scope.registrationForm.classes.forEach(function(activity){
+                if (!activity.fee) {
+                    return;
+                }
+                fees = fees + parseInt(activity.fee);
+            });
+            return fees;
+        };
+
         $scope.createRegistrationForm = function() {
             console.log($scope.registrationForm);
-        }
+        };
     });

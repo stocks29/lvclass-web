@@ -1,6 +1,6 @@
 <div class="container">
         <div class="title">
-            <h1>Las Vegas Classes</h1>
+            <h1>Las Vegas Valley Classes</h1>
         </div>
         <nav class="navbar navbar-default topnav" role="navigation">
             <div class="collapse navbar-collapse">
@@ -24,7 +24,6 @@
                                 <li><a href class="nav navbar-link" ng-click="sort('startTime')">Time</a></li>
                                 <li><a href class="nav navbar-link" ng-click="sort('fee')">Fee</a></li>
                                 </ul>
-
                         </div>
                         <div class="col-lg-4 navbar-right">
                             <div class="nav navbar-right" ng-controller="EventListCtrl">
@@ -53,6 +52,76 @@
                             <option ng-selected="queryParams.category == 'Youth'">Youth</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Earliest Time</label>
+                        <select class="form-control" ng-model="queryParams.begTime">
+                            <option ng-selected="!queryParams.begTime">Any</option>
+                            <option ng-value="00:00" ng-selected="queryParams.begTime == '00:00'">12:00 AM</option>
+                            <option ng-value="01:00" ng-selected="queryParams.begTime == '01:00'">1:00 AM</option>
+                            <option ng-value="02:00" ng-selected="queryParams.begTime == '02:00'">2:00 AM</option>
+                            <option ng-value="03:00" ng-selected="queryParams.begTime == '03:00'">3:00 AM</option>
+                            <option ng-value="04:00" ng-selected="queryParams.begTime == '04:00'">4:00 AM</option>
+                            <option ng-value="05:00" ng-selected="queryParams.begTime == '05:00'">5:00 AM</option>
+                            <option ng-value="06:00" ng-selected="queryParams.begTime == '06:00'">6:00 AM</option>
+                            <option ng-value="07:00" ng-selected="queryParams.begTime == '07:00'">7:00 AM</option>
+                            <option ng-value="08:00" ng-selected="queryParams.begTime == '08:00'">8:00 AM</option>
+                            <option ng-value="09:00" ng-selected="queryParams.begTime == '09:00'">9:00 AM</option>
+                            <option ng-value="10:00" ng-selected="queryParams.begTime == '10:00'">10:00 AM</option>
+                            <option ng-value="11:00" ng-selected="queryParams.begTime == '11:00'">11:00 AM</option>
+                            <option ng-value="12:00" ng-selected="queryParams.begTime == '12:00'">12:00 PM</option>
+                            <option ng-value="13:00" ng-selected="queryParams.begTime == '13:00'">1:00 PM</option>
+                            <option ng-value="14:00" ng-selected="queryParams.begTime == '14:00'">2:00 PM</option>
+                            <option ng-value="15:00" ng-selected="queryParams.begTime == '15:00'">3:00 PM</option>
+                            <option ng-value="16:00" ng-selected="queryParams.begTime == '16:00'">4:00 PM</option>
+                            <option ng-value="17:00" ng-selected="queryParams.begTime == '17:00'">5:00 PM</option>
+                            <option ng-value="18:00" ng-selected="queryParams.begTime == '18:00'">6:00 AM</option>
+                            <option ng-value="19:00" ng-selected="queryParams.begTime == '19:00'">7:00 AM</option>
+                            <option ng-value="20:00" ng-selected="queryParams.begTime == '20:00'">8:00 AM</option>
+                            <option ng-value="21:00" ng-selected="queryParams.begTime == '21:00'">9:00 AM</option>
+                            <option ng-value="22:00" ng-selected="queryParams.begTime == '22:00'">10:00 AM</option>
+                            <option ng-value="23:00" ng-selected="queryParams.begTime == '23:00'">11:00 AM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Latest Time</label>
+                        <select class="form-control" ng-model="queryParams.endTime">
+                            <option ng-selected="!queryParams.endTime">Any</option>
+                            <option ng-value="00:00" ng-selected="queryParams.endTime == '00:00'">12:00 AM</option>
+                            <option ng-value="01:00" ng-selected="queryParams.endTime == '01:00'">1:00 AM</option>
+                            <option ng-value="02:00" ng-selected="queryParams.endTime == '02:00'">2:00 AM</option>
+                            <option ng-value="03:00" ng-selected="queryParams.endTime == '03:00'">3:00 AM</option>
+                            <option ng-value="04:00" ng-selected="queryParams.endTime == '04:00'">4:00 AM</option>
+                            <option ng-value="05:00" ng-selected="queryParams.endTime == '05:00'">5:00 AM</option>
+                            <option ng-value="06:00" ng-selected="queryParams.endTime == '06:00'">6:00 AM</option>
+                            <option ng-value="07:00" ng-selected="queryParams.endTime == '07:00'">7:00 AM</option>
+                            <option ng-value="08:00" ng-selected="queryParams.endTime == '08:00'">8:00 AM</option>
+                            <option ng-value="09:00" ng-selected="queryParams.endTime == '09:00'">9:00 AM</option>
+                            <option ng-value="10:00" ng-selected="queryParams.endTime == '10:00'">10:00 AM</option>
+                            <option ng-value="11:00" ng-selected="queryParams.endTime == '11:00'">11:00 AM</option>
+                            <option ng-value="12:00" ng-selected="queryParams.endTime == '12:00'">12:00 PM</option>
+                            <option ng-value="13:00" ng-selected="queryParams.endTime == '13:00'">1:00 PM</option>
+                            <option ng-value="14:00" ng-selected="queryParams.endTime == '14:00'">2:00 PM</option>
+                            <option ng-value="15:00" ng-selected="queryParams.endTime == '15:00'">3:00 PM</option>
+                            <option ng-value="16:00" ng-selected="queryParams.endTime == '16:00'">4:00 PM</option>
+                            <option ng-value="17:00" ng-selected="queryParams.endTime == '17:00'">5:00 PM</option>
+                            <option ng-value="18:00" ng-selected="queryParams.endTime == '18:00'">6:00 AM</option>
+                            <option ng-value="19:00" ng-selected="queryParams.endTime == '19:00'">7:00 AM</option>
+                            <option ng-value="20:00" ng-selected="queryParams.endTime == '20:00'">8:00 AM</option>
+                            <option ng-value="21:00" ng-selected="queryParams.endTime == '21:00'">9:00 AM</option>
+                            <option ng-value="22:00" ng-selected="queryParams.endTime == '22:00'">10:00 AM</option>
+                            <option ng-value="23:00" ng-selected="queryParams.endTime == '23:00'">11:00 AM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fee</label>
+                        <select class="form-control" ng-model="queryParams.price">
+                            <option ng-selected="!queryParams.price">All</option>
+                            <option ng-value="0" ng-selected="queryParams.price == '0'">$0</option>
+                            <option ng-value="20" ng-selected="queryParams.price == '20'">Up to $20</option>
+                            <option ng-value="40" ng-selected="queryParams.price == '40'">Up to $40</option>
+                            <option ng-value="60" ng-selected="queryParams.price == '60'">Up to $60</option>
+                        </select>
+                    </div>
                     <div>
                         <label class="control-label">Days of Week</label>
                     </div>
@@ -79,16 +148,6 @@
                         <input type="checkbox" ng-model="queryParams.daysOfWeek"> Su
                     </label>
                     <hr/>
-                    <div class="form-group">
-                        <label class="control-label">Fee</label>
-                        <select class="form-control" ng-model="queryParams.price">
-                            <option ng-selected="!queryParams.price">All</option>
-                            <option ng-value="0">$0</option>
-                            <option ng-value="20">Up to $20</option>
-                            <option ng-value="40">Up to $40</option>
-                            <option ng-value="60">Up to $60</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn">Update</button>
                 </form>
             </div>
@@ -98,7 +157,6 @@
                 <span class="emboss dark">No Results Found</span>
             </div>
             <div class="repeater" ng-repeat="event in events.data">
-
                 <h2><a href="#/events/{{event._id}}">{{event.title}}</a></h2>
                 <p>{{event.description}}</p>
                 <table class= "table table-striped">
