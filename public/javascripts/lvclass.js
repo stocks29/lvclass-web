@@ -21,6 +21,10 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
                 controller:'EventCtrl',
                 templateUrl:'templates/events/event.html'
             })
+            .when('/events/:eventId/register', {
+                controller:'RegisterCtrl',
+                templateUrl:'templates/events/register.html'
+            })
             .otherwise({
                 "redirectTo": '/events'
             });
@@ -136,4 +140,20 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
                 $scope.resetReviewForm();
             });
         };
+    })
+
+    .controller('RegisterCtrl', function($scope, $routeParams, Events){
+        $scope.parseInt = function(number){
+            if (!number) {
+                return 0;
+            } else {
+                return parseInt(number);
+            }
+        };
+
+        $scope.registrationForm = {};
+        $scope.event = Events.get({eventId: $routeParams.eventId},function(event){
+            $scope.registrationForm.activity1Name = event.title;
+            $scope.registrationForm.activity1Fee = event.fee;
+        });
     });

@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="repeater">
+        <h1>Register for {{event.title}}</h1>
+
+        <br>
+        <p>{{event.description}}</p>
+
+        <form ng-submit="createRegistrationForm()" class="form-horizontal" role="form">
+
+            <br>
+            <h2>Parent/Guardian Information</h2>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.firstName" id="firstName" type="text" class="form-control" placeholder="John"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.lastName" id="lastName" type="text" class="form-control" placeholder="Public"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone1" class="col-sm-2 control-label">Phone #1</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.phone1" id="phone1" type="text" class="form-control" placeholder="(555) 555-5555"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone2" class="col-sm-2 control-label">Phone #2</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.phone2" id="phone2" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="emergencyContact" class="col-sm-2 control-label">Emergency #/Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.emergencyContact" id="emergencyContact" type="text" class="form-control" placeholder="(555) 555-5555 / Jane"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.address" id="address" type="text" class="form-control" placeholder="123 Tall Oak Street"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="apartment" class="col-sm-2 control-label">Apt</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.apartment" id="apartment" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">City</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.city" id="city" type="text" class="form-control" placeholder="Las Vegas"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="zip" class="col-sm-2 control-label">Zip</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.zip" id="zip" type="text" class="form-control" placeholder="89148"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.email" id="email" type="text" class="form-control" placeholder="john.public@gmail.com"/>
+                </div>
+            </div>
+
+            <br>
+            <h2>Participant Information</h2>
+            <div class="form-group">
+                <label for="participant1Name" class="col-sm-2 control-label">Participant #1 Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant1Name" id="participant1Name" type="text" class="form-control" placeholder="Timmy Public"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participant1DateOfBirth" class="col-sm-2 control-label">Participant #1 Date of Birth</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant1DateOfBirth" id="participant1DateOfBirth" type="text" class="form-control" placeholder="2005-03-28"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participant2Name" class="col-sm-2 control-label">Participant #2 Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant2Name" id="participant2Name" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participant2DateOfBirth" class="col-sm-2 control-label">Participant #2 Date of Birth</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant2DateOfBirth" id="participant2DateOfBirth" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participant3Name" class="col-sm-2 control-label">Participant #3 Name</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant3Name" id="participant3Name" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="participant3DateOfBirth" class="col-sm-2 control-label">Participant #3 Date of Birth</label>
+                <div class="col-sm-10">
+                    <input ng-model="registrationForm.participant3DateOfBirth" id="participant3DateOfBirth" type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="specialAccommodations" class="col-sm-2 control-label">Do any participants need special accomodations?</label>
+                <div class="col-sm-10">
+                    <textarea ng-model="registrationForm.specialAccommodations" id="specialAccommodations" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <br>
+            <h2>Activities</h2>
+            <table>
+                <tr>
+                    <th>Activity Code#</th>
+                    <th>Activity Name</th>
+                    <th>Session #</th>
+                    <th>Participant Name (First,Last)</th>
+                    <th>Fee</th>
+                </tr>
+                <tr>
+                    <td><input ng-model="registrationForm.activity1Code" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity1Name" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity1Session" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity1Participant" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity1Fee" type="text" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td><input ng-model="registrationForm.activity2Code" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity2Name" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity2Session" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity2Participant" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity2Fee" type="text" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td><input ng-model="registrationForm.activity3Code" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity3Name" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity3Session" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity3Participant" type="text" class="form-control"/></td>
+                    <td><input ng-model="registrationForm.activity3Fee" type="text" class="form-control"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Fee</td>
+                    <td>${{parseInt(registrationForm.activity1Fee) + parseInt(registrationForm.activity2Fee) + parseInt(registrationForm.activity3Fee)}}</td>
+                </tr>
+            </table>
+
+            <br>
+            <h2>Payment Information</h2>
+            <p>If paying by check, please provide the following information.</p>
+            <div class="form-group">
+                <label for="driversLicenseNumber" class="col-sm-2 control-label">Drivers License Number</label>
+                <div class="col-sm-10">
+                    <textarea ng-model="registrationForm.driversLicenseNumber" id="driversLicenseNumber" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="driversLicenseState" class="col-sm-2 control-label">Drivers License State</label>
+                <div class="col-sm-10">
+                    <textarea ng-model="registrationForm.driversLicenseState" id="driversLicenseState" class="form-control"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary" type="submit">Create Registration Form</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
