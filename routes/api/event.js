@@ -32,11 +32,14 @@ exports.list = function(req, res){
     var searchTerm = req.query.q;
     var offset     = req.query.offset;
     var category   = req.query.category;
+    var sortBy     = req.query.sortBy;
+    var sortDir    = req.query.sortDir;
 
-    var queryOptions = offset? {"skip": offset} : null;
+    var dbQuery = Event.find(null, null, null);
 
-    var dbQuery = Event.find(null, null, queryOptions);
     dbQuery.limit(50);
+    dbQuery.skip(offset ? offset : 0);
+    dbQuery.sort({sortBy : sortDir});
 
     if (searchTerm) {
         var searchRe = new RegExp(searchTerm, "i");
