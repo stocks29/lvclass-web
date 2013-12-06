@@ -53,7 +53,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Between</label>
+                        <label class="control-label">Earliest Time</label>
                         <select class="form-control" ng-model="queryParams.begTime">
                             <option ng-selected="!queryParams.begTime">Any</option>
                             <option value="00:00" ng-selected="queryParams.begTime == '00:00'">12:00 AM</option>
@@ -83,7 +83,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">and</label>
+                        <label class="control-label">Latest Time</label>
                         <select class="form-control" ng-model="queryParams.endTime">
                             <option ng-selected="!queryParams.endTime">Any</option>
                             <option value="00:00" ng-selected="queryParams.endTime == '00:00'">12:00 AM</option>
