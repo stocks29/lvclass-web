@@ -59,7 +59,8 @@ a {
 
 .title
 {
-    background: #191970;
+    background: url(http://res.cloudinary.com/dnar4muay/image/upload/c_scale,h_200,o_60,w_1024/v1386279824/red-rocks-4_vb1b5e.jpg);
+    background-size: cover; 
     padding: 10px;
 }
 
