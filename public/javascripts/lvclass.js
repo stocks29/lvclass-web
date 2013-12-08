@@ -191,6 +191,7 @@ angular.module('lvclass', ['ngRoute', 'ngResource', 'ui.bootstrap'])
             $scope.registrationForm.classes[0].code = event.eventId;
             $scope.registrationForm.classes[0].className = event.title;
             $scope.registrationForm.classes[0].fee = event.fee;
+            $scope.registrationForm.municipality = event.municipality;
         });
 
         $scope.parseInt = function(number){
